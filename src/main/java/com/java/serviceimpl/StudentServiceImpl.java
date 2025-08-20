@@ -11,48 +11,44 @@ import com.java.repository.StudentRepository;
 import com.java.service.StudentService;
 
 @Service
-public class StudentServiceImpl  implements StudentService
-{
+public class StudentServiceImpl implements StudentService {
+
 	@Autowired
 	private StudentRepository sr;
 
 	@Override
-	public void saveStudentDetails(Student st) 
-	{
+	public void saveStudentDetails(Student st) {
 		sr.save(st);
-		
 	}
 
 	@Override
 	public List<Student> getAllStudent() {
-		
 		return sr.findAll();
 	}
 
 	@Override
-	public List<Student> searchStudentsByBatch(String batchNumber) 
-	{
-		List<Student> batchStudents= sr.findAllByBatchNumber(batchNumber);
-		
-		return batchStudents ;
+	public List<Student> searchStudentsByBatch(String batchNumber) {
+		return sr.findAllByBatchNumber(batchNumber);
 	}
 
 	@Override
-	public Student getSingleStudent(int id) 
-	{
-		Optional<Student> opStudent=sr.findById(id);
-		return opStudent.get();
+	public Student getSingleStudent(int id) {
+		Optional<Student> op = sr.findById(id);
+		return op.orElse(null);
 	}
 
 	@Override
-	public void updateStudentFees(int studentid, float ammount) 
-	{
-		Optional<Student> opStudent=sr.findById(studentid);
-		Student st=opStudent.get();
-		
-		st.setFeesPaid(st.getFeesPaid()+ammount);
-		sr.save(st);
-		
+	public void updateStudentFees(int studentid, float amount) {
+		Optional<Student> op = sr.findById(studentid);
+		if (op.isPresent()) {
+			Student st = op.get();
+			st.setFeesPaid(st.getFeesPaid() + amount);
+			sr.save(st);
+		}
 	}
 
+	@Override
+	public void deleteStudent(int id) {
+		sr.deleteById(id);
+	}
 }

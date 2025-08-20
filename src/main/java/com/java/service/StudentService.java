@@ -1,18 +1,18 @@
 package com.java.service;
 
 import java.util.List;
-
 import com.java.model.Student;
 
-public interface StudentService 
-{
-    public void saveStudentDetails(Student st);
-    
-    public List<Student> getAllStudent();
-    
-    public List<Student> searchStudentsByBatch(String batchNumber);
+public interface StudentService {
+    void saveStudentDetails(Student st);
 
-	public Student getSingleStudent(int id);
+    List<Student> getAllStudent();
 
-	public void updateStudentFees(int studentid, float ammount);
+    List<Student> searchStudentsByBatch(String batchNumber);
+
+    Student getSingleStudent(int id);
+
+    void updateStudentFees(int studentid, float amount);
+
+    void deleteStudent(int id); // The method is declared here
 }
