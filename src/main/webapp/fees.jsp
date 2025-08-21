@@ -1,26 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- ✅ Responsive scaling -->
 <title>Pay Fees</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
 <style>
   body {
-    background: url('../images/pngtree-illustration-of-tax-payment-concept-in-3d-render-image_3682339.jpg') no-repeat center center fixed;
+    background: url('../images/pngtree-illustration-of-tax-payment-concept-in-3d-render-image_3682339.jpg') 
+                no-repeat center center fixed;
     background-size: cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 15px; /* ✅ Prevent content touching edges on small screens */
   }
 
   .card-box {
-    width: 650px;
-    min-height: 500px;
     background: rgba(255, 255, 255, 0.95);
-    margin: 60px auto;
-    padding: 35px;
+    margin: 50px auto;
+    padding: 30px;
     border-radius: 20px;
     box-shadow: 0px 6px 20px rgba(0,0,0,0.35);
+    width: 100%;
+    max-width: 700px;  /* ✅ Limit width for desktop */
   }
 
   h4 {
@@ -49,7 +52,6 @@
   }
 
   .btn {
-    width: 48%;
     font-weight: 600;
     padding: 10px;
     border-radius: 8px;
@@ -71,6 +73,27 @@
 
   .btn-secondary:hover {
     background: #5a6268;
+  }
+
+  /* ✅ Mobile adjustments */
+  @media (max-width: 576px) {
+    .card-box {
+      padding: 20px;
+      margin: 20px auto;
+    }
+
+    h4 {
+      font-size: 1.3rem;
+    }
+
+    .d-flex {
+      flex-direction: column; /* stack buttons */
+      gap: 10px;
+    }
+
+    .btn {
+      width: 100%;
+    }
   }
 </style>
 </head>
