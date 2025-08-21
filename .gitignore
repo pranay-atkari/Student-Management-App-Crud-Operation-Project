@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+*.jpg
+src/main/webapp/images/addstudent.jpg

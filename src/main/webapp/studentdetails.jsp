@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,7 +130,8 @@
                 <td>${s.studentCourse}</td>
                 <td>${s.batchNumber}</td>
                 <td>${s.batchMode}</td>
-                <td>${s.feesPaid}</td>
+                <!-- Format fees without decimal -->
+                <td><fmt:formatNumber value="${s.feesPaid}" type="number" maxFractionDigits="0"/></td>
                 <td>
                   <a class="btn btn-sm btn-success" href="/fees?id=${s.studentId}">Pay Fees</a>
                   <a class="btn btn-sm btn-danger"

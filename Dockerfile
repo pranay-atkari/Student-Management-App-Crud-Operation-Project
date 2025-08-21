@@ -14,7 +14,7 @@ RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Expose port
-EXPOSE 8080
+EXPOSE 9091
 
 # Run the executable WAR produced by Spring Boot
 CMD ["java", "-jar", "target/Student_ManagementApp-0.0.1-SNAPSHOT.war"]

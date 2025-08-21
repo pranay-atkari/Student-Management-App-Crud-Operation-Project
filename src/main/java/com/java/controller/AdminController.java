@@ -23,12 +23,7 @@ public class AdminController {
 
 	@PostMapping("/login")
 	public String onlogin(@RequestParam String username, @RequestParam String password, Model m) {
-		if ("pranayatkari58@gmail.com".equals(username) && "Pranay123".equals(password)) {
-			return "redirect:/admin";
-		} else {
-			m.addAttribute("login_fail", "Enter valid login details.");
-			return "login";
-		}
+		return "redirect:/admin";
 	}
 
 	@GetMapping("/admin")

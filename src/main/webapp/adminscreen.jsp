@@ -29,7 +29,7 @@
     max-width: 850px;
     margin: auto;
     border-radius: 15px;
-    position: relative; /* keep above overlay */
+    position: relative;
     z-index: 2;
     background: rgba(255,255,255,0.95);
 }
@@ -49,7 +49,6 @@
     font-weight: 500;
     transition: all 0.3s ease-in-out;
 }
-/* Hover colors different for each button */
 .btn-enroll:hover {
     background-color: #007bff;
     color: #fff;
@@ -62,12 +61,23 @@
     background-color: #dc3545;
     color: #fff;
 }
+
+/* 🚫 Hide number spinners (Chrome, Edge, Safari) */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* 🚫 Hide number spinners (Firefox) */
+input[type=number] {
+    -moz-appearance: textfield;
+}
 </style>
 </head>
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
-    <img src="../images/cjclogo.jpeg.jpg"  height="90" alt="logo">
+    <img src="../images/cjclogo.jpeg.jpg" height="90" alt="logo">
     <div>
         <a href="/admin" class="btn btn-outline-primary btn-sm btn-enroll">Enroll Student</a>
         <a href="/student-details" class="btn btn-outline-success btn-sm btn-view">View Student</a>
@@ -95,7 +105,8 @@
       <div class="row">
         <div class="col-md-6 mb-3">
           <label class="form-label">Age</label>
-          <input type="number" name="studentAge" class="form-control" required/>
+          <!-- 🚫 No spinner, only whole numbers -->
+          <input type="number" name="studentAge" class="form-control" required min="1" step="1"/>
         </div>
         <div class="col-md-6 mb-3">
           <label class="form-label">College Name</label>
@@ -106,7 +117,8 @@
       <div class="row">
         <div class="col-md-6 mb-3">
           <label class="form-label">Fees Paid</label>
-          <input type="number" step="0.01" name="feesPaid" class="form-control" required/>
+          <!-- 🚫 No spinner, only whole numbers -->
+          <input type="number" name="feesPaid" class="form-control" required min="0" step="1"/>
         </div>
         <div class="col-md-6 mb-3">
           <label class="form-label d-block">Course</label>
